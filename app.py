@@ -5,7 +5,7 @@ import time
 import random
 import qrcode
 from difflib import get_close_matches
-
+demo.launch(server_name="0.0.0.0", server_port=10000)
 import gradio as gr
 from PIL import Image
 
@@ -244,6 +244,11 @@ with gr.Blocks(css=CSS, title="PulseGuard AI Prescription Guardian") as demo:
         status = gr.Textbox()
 
         qr_btn.click(generate_qr_image, link, [qr_img, status])
+        import os
+
+demo.launch(
+    server_name="0.0.0.0",
+    server_port=int(os.environ.get("PORT", 10000))
+)
 
 
-demo.launch(server_name="0.0.0.0", server_port=10000)
