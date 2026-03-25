@@ -10,10 +10,19 @@ Original file is located at
 # ====== PulseGuard — Fixed final code ======
 # If running in Colab/Jupyter, uncomment and run the install line once:
 # !pip install gradio transformers qrcode[pil] --quiet
-pip install qrcode[pil]
+#pip install qrcode[pil]
 import io
 import time
 import random
+import qrcode
+
+data = "AI Smart Hospital"
+
+img = qrcode.make(data)
+
+img.save("hospital_qr.png")
+
+print("QR Code Generated Successfully")
 from difflib import get_close_matches
 
 import gradio as gr
