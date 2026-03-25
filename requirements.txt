@@ -2,3 +2,4 @@ gradio==4.44.0
 transformers
 qrcode[pil]
 pillow
+pyaudioop
