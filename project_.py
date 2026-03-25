@@ -15,7 +15,22 @@ import io
 import time
 import random
 import qrcode
+from flask import Flask
+import qrcode
 
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    data = "AI Smart Hospital"
+
+    img = qrcode.make(data)
+    img.save("hospital_qr.png")
+
+    return "QR Code Generated Successfully"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
 data = "AI Smart Hospital"
 
 img = qrcode.make(data)
