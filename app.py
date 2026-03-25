@@ -4,8 +4,8 @@ import io
 import time
 import random
 import qrcode
+import os
 from difflib import get_close_matches
-demo.launch(server_name="0.0.0.0", server_port=10000)
 import gradio as gr
 from PIL import Image
 
@@ -63,12 +63,14 @@ def best_med_match(user_med: str, cutoff=0.6):
 
 
 def check_med_suitability(med_key, health_conditions, disease):
+
     entry = MED_DB[med_key]
 
     contraindications = [c.lower() for c in entry["contraindications"]]
     disease_ok = disease.lower() in entry["indications"] if disease else False
 
     reasons = []
+
     for hc in health_conditions:
         for contra in contraindications:
             if contra in hc.lower():
@@ -116,7 +118,7 @@ def medicine_checker(med_input, age, health_conditions, disease_to_treat):
 
 
 # -----------------------------
-# AI Doctor (simple)
+# AI Doctor
 # -----------------------------
 def ai_doctor_strict(text):
 
@@ -244,11 +246,9 @@ with gr.Blocks(css=CSS, title="PulseGuard AI Prescription Guardian") as demo:
         status = gr.Textbox()
 
         qr_btn.click(generate_qr_image, link, [qr_img, status])
-        import os
+
 
 demo.launch(
     server_name="0.0.0.0",
     server_port=int(os.environ.get("PORT", 10000))
 )
-
-
