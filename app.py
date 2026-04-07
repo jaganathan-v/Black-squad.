@@ -143,6 +143,8 @@ if TRANSFORMERS_AVAILABLE:
         ai_pipe = pipeline("text-generation", model="gpt2")
     except:
         pass
+else:
+    reply = "Stay hydrated and monitor symptoms."
 
 
 def ai_chat_short(user_text, history):
