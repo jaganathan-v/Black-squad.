@@ -1,5 +1,6 @@
 gradio==4.44.0
-transformers
+transformers==5.5.3
 qrcode[pil]
 pillow
+ffmpy
 
