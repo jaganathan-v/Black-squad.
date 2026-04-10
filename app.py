@@ -5,7 +5,6 @@ import gradio as gr
 from difflib import get_close_matches
 from PIL import Image
 
-# Optional transformers support
 try:
     from transformers import pipeline
     TRANSFORMERS_AVAILABLE = True
@@ -13,9 +12,6 @@ except Exception:
     pipeline = None
     TRANSFORMERS_AVAILABLE = False
 
-# -----------------------------
-# Local Medicine DB
-# -----------------------------
 MED_DB = {
     "Dolo 650": {
         "dosage": "650 mg every 6-8 hours (max 4 tablets / 24 hrs)",
